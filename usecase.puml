@@ -1,0 +1,22 @@
+@startuml
+Actor user as us
+Actor owner as ow
+Actor admin as ad
+
+Package tokopakedi {
+Usecase "login" as a1
+
+Usecase "pilih kategori" as u1
+Usecase "mempikan data kategori" as u2
+Usecase "pilih product" as u3
+Usecase "menampikan data product" as u4
+}
+
+us --> a1:login user
+Ow --> a1:login owner
+Ad --> a1:login admin
+
+a1 --> u1
+u1 ..> u2:include
+
+@enduml
