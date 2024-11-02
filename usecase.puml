@@ -1,22 +1,44 @@
 @startuml
 Actor user as us
 Actor owner as ow
-Actor admin as ad
+Actor admin as ad 
 
 Package tokopakedi {
 Usecase "login" as a1
+Usecase "login user" as a2
+Usecase "login admin" as a3
+Usecase "login owner" as a4 
 
 Usecase "pilih kategori" as u1
 Usecase "mempikan data kategori" as u2
 Usecase "pilih product" as u3
 Usecase "menampikan data product" as u4
-}
+Usecase "checkout" as u5
+Usecase "menampilkan diskon" as u6
+Usecase "menampilkan informasi dan data pembayaran" as u7
+Usecase "menampilkan jenis pembayaran" as u8
+Usecase "melakukan transkasi pembayaran" as u9
+Usecase "menampilkan informasi tansaksi pembayaran" as u10
+Usecase "download bukti pembayaran" as u11
+} 
 
 us --> a1:login user
-Ow --> a1:login owner
-Ad --> a1:login admin
+ow --> a1:login owner
+ad --> a1:login admin 
 
-a1 --> u1
+a1 --> a2
+a1 --> a3
+a1 --> a4 
+
+a2 --> u1
 u1 ..> u2:include
-
+u1 --> u3
+u3 ..> u4:include
+u3 --> u5
+u5 ..> u6:extend
+u5 ..> u7:include
+u5 ..> u8:include
+u5 --> u9
+u9 ..> u10:include
+u10 ..> u11:extend
 @enduml
